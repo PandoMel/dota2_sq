@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route("/", methods=["POST"])
 def handle_gsi():
-    data = request.get_json()
+    data = request.get_json(force=True)
 
     # Выводим всё состояние (для дебага)
     print(json.dumps(data, indent=2))
@@ -48,4 +48,3 @@ if __name__ == "__main__":
     server_thread = threading.Thread(target=run_server)
     server_thread.start()
     print("🌐 Сервер запущен на http://localhost:3000")
-  
